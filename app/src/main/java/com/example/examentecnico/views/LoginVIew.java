@@ -75,8 +75,12 @@ public class LoginVIew extends AppCompatActivity implements LoginContract.View {
         String password = edtxtPassword.getText().toString();
         //RequestQueue queue = Volley.newRequestQueue(this);
         presenter.sesion(usuario, password, mAuth, this);
-       //
+    }
 
+    public void createUser(View view) {
+        String usuario = edtxtUsuario.getText().toString();
+        String password = edtxtPassword.getText().toString();
+        presenter.createUser(usuario, password, mAuth, this);
     }
 
     @Override
@@ -122,4 +126,6 @@ public class LoginVIew extends AppCompatActivity implements LoginContract.View {
     public void sessionSuccess() {
         startActivity(new Intent(this, WelcomeView.class));
     }
+
+
 }

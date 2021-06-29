@@ -44,6 +44,9 @@ public interface LoginContract {
         void sesionSuccess();
 
         void sesion(String usuario, String password, FirebaseAuth auth, Context context);
+
+        void createUser(String usuario, String password, FirebaseAuth auth, Context context);
+
     }
 
     interface Model{
@@ -51,5 +54,7 @@ public interface LoginContract {
         void sesionRespons(String usuario, String password, LoginContract.Presenter listener, RequestQueue queue);
 
         void sesionFBase(String usuario, String password, LoginContract.Presenter listener, FirebaseAuth auth, Context context);
+
+        void createFBaseUser(String usuario, String password, LoginContract.Presenter listener, FirebaseAuth auth, Context context);
     }
 }
