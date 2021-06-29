@@ -120,6 +120,6 @@ public class LoginVIew extends AppCompatActivity implements LoginContract.View {
 
     @Override
     public void sessionSuccess() {
-        startActivity(new Intent(this, WelcomeView.class));
+        startActivity(new Intent(this, ListInfoView.class));
     }
 }
