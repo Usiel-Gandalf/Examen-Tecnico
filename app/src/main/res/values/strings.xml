@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Examentecnico</string>
+    <string name="singout">Cerrar sesion</string>
 </resources>
