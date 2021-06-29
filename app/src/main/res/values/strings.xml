@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">Examentecnico</string>
     <string name="singout">Cerrar sesion</string>
-    <string name="listinfo">Lista</string>
-
 </resources>
