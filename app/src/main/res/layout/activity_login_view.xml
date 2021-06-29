@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:paddingTop="200dp"
+        android:paddingTop="100dp"
         >
 
         <EditText
