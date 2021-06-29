@@ -77,7 +77,7 @@
             android:background="@drawable/roundborders"
             android:gravity="center"
             android:onClick="createUser"
-            android:text="Iniciar Sesion"
+            android:text="Crear Usuario"
             android:textColor="@color/cardview_light_background" />
     </LinearLayout>
 
