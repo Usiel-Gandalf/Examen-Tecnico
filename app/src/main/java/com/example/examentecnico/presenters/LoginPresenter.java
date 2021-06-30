@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import com.android.volley.RequestQueue;
 import com.example.examentecnico.contracts.LoginContract;
 import com.example.examentecnico.models.LoginModel;
 import com.example.examentecnico.views.WelcomeView;
