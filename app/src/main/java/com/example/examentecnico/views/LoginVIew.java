@@ -3,6 +3,7 @@ package com.example.examentecnico.views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.examentecnico.R;
 import com.example.examentecnico.contracts.LoginContract;
@@ -13,5 +14,11 @@ public class LoginVIew extends AppCompatActivity implements LoginContract {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_view);
+    }
+
+    public void login(View view) {
+    }
+
+    public void createUser(View view) {
     }
 }
