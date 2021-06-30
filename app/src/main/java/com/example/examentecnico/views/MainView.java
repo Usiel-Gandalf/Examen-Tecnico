@@ -66,20 +66,6 @@ MainContract.Presenter presenter;
 
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.home:
-                MainFragment mainFragment = new MainFragment();
-                FragmentTransaction fragmentTransactionMain = getSupportFragmentManager().beginTransaction();
-                fragmentTransactionMain.replace(R.id.frameLayout, mainFragment);
-                fragmentTransactionMain.commit();
-                return true;
-
-            case R.id.listdatas:
-                ListFragment listFragment = new ListFragment();
-                FragmentTransaction fragmentTransactionList = getSupportFragmentManager().beginTransaction();
-                fragmentTransactionList.replace(R.id.frameLayout, listFragment);
-                fragmentTransactionList.commit();
-                return true;
-
             case R.id.singout:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(this, "Sesion cerrada", Toast.LENGTH_LONG).show();
