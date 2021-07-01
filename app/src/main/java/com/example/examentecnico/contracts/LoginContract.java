@@ -2,7 +2,6 @@ package com.example.examentecnico.contracts;
 
 import android.content.Context;
 
-import com.android.volley.RequestQueue;
 import com.google.firebase.auth.FirebaseAuth;
 
 public interface LoginContract {
@@ -47,8 +46,6 @@ public interface LoginContract {
     }
 
     interface Model{
-        //funcion de login para conexion mediante un service web, utilizando un servicio web, funcion desactivada por ahora
-        void sesionRespons(String usuario, String password, LoginContract.Presenter listener, RequestQueue queue);
 
         void sesionFBase(String usuario, String password, LoginContract.Presenter listener, FirebaseAuth auth, Context context);
     }

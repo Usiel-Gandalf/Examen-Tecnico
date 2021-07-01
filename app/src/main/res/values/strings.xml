@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Examentecnico</string>
-    <string name="singout">Cerrar sesion</string>
+    <string name="respaldDb">Cerrar sesion</string>
 </resources>

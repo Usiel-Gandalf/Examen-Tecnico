@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.examentecnico.contracts.ListInfoContract;
 import com.example.examentecnico.contracts.LoginContract;
+import com.example.examentecnico.helpers.UserCrud;
 import com.example.examentecnico.helpers.userinfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,11 +20,40 @@ import com.google.gson.JsonArray;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListInfoModel implements ListInfoContract.Model {
+import static com.google.firebase.firestore.Query.Direction.DESCENDING;
 
+public class ListInfoModel implements ListInfoContract.Model {
     @Override
     public void getInfoFB(FirebaseFirestore db, Context context, ListInfoContract.Presenter listener, List<userinfo> listinfo) {
         db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    UserCrud userCrud = new UserCrud(context);
+
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String user = document.getString("usuario");
+                        String country = document.getString("pais");
+                        String ciudad = document.getString("estado");
+                        String gender = document.getString("genero");
+                        listinfo.add(new userinfo(user, country, ciudad, gender));
+                        userCrud.insertUser(user, country, ciudad, gender);
+                        //listener.showMessage(document.getString("usuario"));
+                    }
+
+                    listener.setElementsListView(listinfo);
+
+                }
+                else {
+                       listener.showMessage("Ocurrio un error");
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getInfoFBForValue(String value, String option, FirebaseFirestore db, Context context, ListInfoContract.Presenter listener, List<userinfo> listinfo) {
+        db.collection("users").whereEqualTo(option, value).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -37,11 +67,45 @@ public class ListInfoModel implements ListInfoContract.Model {
 
                         //listener.showMessage(document.getString("usuario"));
                     }
-                    listener.setElementsListView(listinfo);
 
+                    if (listinfo.isEmpty()){
+                        listener.showMessage("No se encontraron resultados de la busqueda");
+                    }else{
+                        listener.setElementsListView(listinfo);
+                    }
                 }
                 else {
-                       listener.showMessage("Ocurrio un error");
+                    listener.showMessage("Ocurrio un error");
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getInfoFBForValueOrdened(String option, FirebaseFirestore db, Context context, ListInfoContract.Presenter listener, List<userinfo> listinfo) {
+        db.collection("users").orderBy(option).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String user = document.getString("usuario");
+                        String country = document.getString("pais");
+                        String ciudad = document.getString("estado");
+                        String gender = document.getString("genero");
+                        listinfo.add(new userinfo(user, country, ciudad, gender));
+
+                        //listener.showMessage(document.getString("usuario"));
+                    }
+
+                    if (listinfo.isEmpty()){
+                        listener.showMessage("No se encontraron resultados de la busqueda");
+                    }else{
+                        listener.setElementsListView(listinfo);
+                    }
+                }
+                else {
+                    listener.showMessage("Ocurrio un error");
                 }
             }
         });

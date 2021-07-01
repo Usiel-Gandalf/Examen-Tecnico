@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="options_array">
+        <item>Usuario</item>
+        <item>Pais</item>
+        <item>Estado</item>
+        <item>Genero</item>
+    </string-array>
+
+</resources>
