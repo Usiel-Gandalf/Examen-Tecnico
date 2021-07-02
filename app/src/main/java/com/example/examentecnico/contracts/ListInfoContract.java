@@ -14,6 +14,10 @@ public interface ListInfoContract {
     interface View{
         void initElements();
 
+        void verifyPermissions();
+
+        void getPermission();
+
 
         void showMessage(String message);
 
@@ -39,13 +43,15 @@ public interface ListInfoContract {
 
         void getInfoFBForValue(String value, Integer option, FirebaseFirestore db, Context context);
 
+        void createDataBase(Context context);
 
+        void createFolder();
 
         void getInfoFBForValueOrdened(Integer option, FirebaseFirestore db, Context context);
 
         void displayAlertOnView(Integer option);
 
-
+        void veryfiPermission(Context context);
 
         void showMessage(String message);
     }
