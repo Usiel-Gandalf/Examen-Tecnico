@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Examentecnico</string>
+    <string name="respaldDb">Cerrar sesion</string>
 </resources>
