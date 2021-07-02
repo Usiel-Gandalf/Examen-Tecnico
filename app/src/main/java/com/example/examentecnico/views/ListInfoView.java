@@ -36,7 +36,7 @@ public class ListInfoView extends AppCompatActivity implements ListInfoContract.
     LinearLayout linearLayout;
     AlertDialog.Builder alertMessage;
     EditText value;
-
+    int REQUEST_CODE = 200;
     private FirebaseFirestore db;
 
     @Override
@@ -54,7 +54,18 @@ public class ListInfoView extends AppCompatActivity implements ListInfoContract.
         value = findViewById(R.id.username);
         presenter = new ListInfoPresenter(this);
         db = FirebaseFirestore.getInstance();
+        getPermission();
         getInfoDb();
+    }
+
+    @Override
+    public void verifyPermissions() {
+        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+    }
+
+    @Override
+    public void getPermission() {
+        presenter.veryfiPermission(this);
     }
 
     @Override

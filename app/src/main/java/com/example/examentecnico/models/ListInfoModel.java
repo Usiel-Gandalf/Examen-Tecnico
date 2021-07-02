@@ -22,13 +22,14 @@ public class ListInfoModel implements ListInfoContract.Model  {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-
+                    UserCrud userCrud = new UserCrud(context);
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         String user = document.getString("usuario");
                         String country = document.getString("pais");
                         String ciudad = document.getString("estado");
                         String gender = document.getString("genero");
                         listinfo.add(new UserInfo(user, country, ciudad, gender));
+                        userCrud.insertUser(user, country, ciudad, gender);
                     }
 
                     listener.setElementsListView(listinfo);
@@ -53,6 +54,7 @@ public class ListInfoModel implements ListInfoContract.Model  {
                         String country = document.getString("pais");
                         String ciudad = document.getString("estado");
                         String gender = document.getString("genero");
+                        listinfo.add(new UserInfo(user, country, ciudad, gender));
                     }
 
                     if (listinfo.isEmpty()){
@@ -80,6 +82,7 @@ public class ListInfoModel implements ListInfoContract.Model  {
                         String country = document.getString("pais");
                         String ciudad = document.getString("estado");
                         String gender = document.getString("genero");
+                        listinfo.add(new UserInfo(user, country, ciudad, gender));
                     }
 
                     if (listinfo.isEmpty()){

@@ -29,17 +29,20 @@ public class ListInfoPresenter implements ListInfoContract.Presenter{
 
     @Override
     public void setElementsListView(List<UserInfo> listinfo) {
+        view.getPermission();
         view.initElementsListView(listinfo);
     }
 
     @Override
     public void getInfoFB(FirebaseFirestore db, Context context) {
+        view.getPermission();
         List<UserInfo> listinfo = new ArrayList<>();;
         model.getInfoFB(db, context, this, listinfo);
     }
 
     @Override
     public void getInfoFBForValue(String value, Integer option, FirebaseFirestore db, Context context) {
+        view.getPermission();
         String optionDb = "";
         List<UserInfo> listinfo = new ArrayList<>();
 
@@ -61,7 +64,25 @@ public class ListInfoPresenter implements ListInfoContract.Presenter{
     }
 
     @Override
+    public void createDataBase(Context context) {
+        File databaseFile = new File(Environment.getExternalStorageDirectory(),"/bd/respaldo.db");
+        if (!databaseFile.exists()){
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+        }
+    }
+
+    @Override
+    public void createFolder() {
+        File nuevaCarpeta = new File(Environment.getExternalStorageDirectory(),"/bd/");
+        if (!nuevaCarpeta.exists()){
+            nuevaCarpeta.mkdirs();
+        }
+    }
+
+    @Override
     public void getInfoFBForValueOrdened(Integer option, FirebaseFirestore db, Context context) {
+        view.getPermission();
         String optionDb = "";
         List<UserInfo> listinfo = new ArrayList<>();
 
@@ -86,6 +107,17 @@ public class ListInfoPresenter implements ListInfoContract.Presenter{
             view.displayOrderList();
         }else if(option == 2){
             view.getInfoDb();
+        }
+    }
+
+    @Override
+    public void veryfiPermission(Context context) {
+        int permissionWriteFiles = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permissionWriteFiles != PackageManager.PERMISSION_GRANTED){
+            view.verifyPermissions();
+        }else {
+            createFolder();
+            createDataBase(context);
         }
     }
 
