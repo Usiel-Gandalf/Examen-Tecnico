@@ -83,6 +83,7 @@ public class LoginView extends AppCompatActivity implements LoginContract.View {
 
     @Override
     public void sessionSuccess() {
+        this.onDestroy();
         startActivity(new Intent(this, MainView.class));
     }
 

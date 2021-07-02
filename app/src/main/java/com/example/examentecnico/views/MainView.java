@@ -37,12 +37,14 @@ public class MainView extends AppCompatActivity implements MainContract.View{
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.lista:
+                this.onDestroy();
                 startActivity(new Intent(this, ListInfoView.class));
                 return true;
 
             case R.id.singout:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(this, "Sesion cerrada", Toast.LENGTH_LONG).show();
+                this.onDestroy();
                 startActivity(new Intent(this, LoginView.class));
                 return true;
 
