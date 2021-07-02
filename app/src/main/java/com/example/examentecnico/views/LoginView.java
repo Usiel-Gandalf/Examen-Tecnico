@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginVIew extends AppCompatActivity implements LoginContract.View {
+public class LoginView extends AppCompatActivity implements LoginContract.View {
     LoginContract.Presenter presenter;
     ConstraintLayout constraintLayoutLogin;
     EditText edtxtUsuario, edtxtPassword;

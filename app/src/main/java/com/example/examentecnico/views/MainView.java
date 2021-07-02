@@ -19,6 +19,7 @@ public class MainView extends AppCompatActivity implements MainContract.View{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
+        setTitle("Bienvenido");
     }
 
     @Override
@@ -35,10 +36,14 @@ public class MainView extends AppCompatActivity implements MainContract.View{
 
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
+            case R.id.lista:
+                startActivity(new Intent(this, ListInfoView.class));
+                return true;
+
             case R.id.singout:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(this, "Sesion cerrada", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, LoginVIew.class));
+                startActivity(new Intent(this, LoginView.class));
                 return true;
 
             default:
