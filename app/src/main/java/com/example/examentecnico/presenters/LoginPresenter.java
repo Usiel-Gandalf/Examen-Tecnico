@@ -72,6 +72,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void sesionSuccess() {
+        view.hideProgressBar();
         view.sessionSuccess();
     }
 
@@ -89,7 +90,6 @@ public class LoginPresenter implements LoginContract.Presenter {
                         view.hideProgressBar();
                         view.showErrorPassword("El campo password no puede estar vacio");
                     }else{
-                        view.hideProgressBar();
                         model.sesionFBase(usuario, password, this, auth, context);
                     }
                 }
