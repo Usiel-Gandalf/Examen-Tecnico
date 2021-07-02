@@ -20,11 +20,101 @@
         android:paddingTop="10dp"
         >
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="151dp"
+            app:srcCompat="@drawable/icono" />
+
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtUserEdtx"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pantalla bienvenida" />
+            android:textColor="@color/black"
+            android:paddingLeft="19dp"
+            android:text="Usuario:" />
+
+        <EditText
+            android:id="@+id/edtxtUser"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/roundborders"
+            android:backgroundTint="#e3e4e5"
+            android:clickable="true"
+            android:hint=""
+            android:inputType="none"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/txtCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:paddingLeft="19dp"
+            android:text="Pais:" />
+
+        <EditText
+            android:id="@+id/edtxtCountry"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/roundborders"
+            android:backgroundTint="#e3e4e5"
+            android:hint="Pais"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/txtEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:paddingLeft="19dp"
+            android:text="Estado:" />
+
+        <EditText
+            android:id="@+id/edtxtState"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/roundborders"
+            android:backgroundTint="#e3e4e5"
+            android:hint="Estado"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/txtGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:paddingLeft="19dp"
+            android:text="Genero:" />
+
+        <EditText
+            android:id="@+id/edtxtGender"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundborders"
+            android:backgroundTint="#e3e4e5"
+            android:hint="Genero"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
+
+        <Button
+            android:id="@+id/btnSaveDataUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/roundborders"
+            android:gravity="center"
+            android:onClick="saveData"
+            android:text="Guardar/Actualizar datos"
+            android:textColor="@color/cardview_light_background"  />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

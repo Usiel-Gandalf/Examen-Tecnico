@@ -17,6 +17,8 @@ public class UserCrud extends DbHelper {
         this.context = context;
     }
 
+
+
     public long insertUser(String usuario, String pais, String estado, String genero){
         long id = 0;
         try {
