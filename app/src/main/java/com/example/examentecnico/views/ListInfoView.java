@@ -128,6 +128,10 @@ public class ListInfoView extends AppCompatActivity implements ListInfoContract.
             public void onClick(DialogInterface dialog, int which) {
                 presenter.displayAlertOnView(which);
             }
+        }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
         });
 
         AlertDialog dialog = alertMessage.create();
@@ -155,6 +159,10 @@ public class ListInfoView extends AppCompatActivity implements ListInfoContract.
                 Integer idSpinner = Integer.parseInt(String.valueOf(spinner.getSelectedItemId()));
                 presenter.getInfoFBForValue(valueSearchable, idSpinner, db, getApplicationContext());
             }
+        }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
         });
 
         AlertDialog dialog = alertMessage.create();
@@ -175,9 +183,14 @@ public class ListInfoView extends AppCompatActivity implements ListInfoContract.
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 Integer idSpinner = Integer.parseInt(String.valueOf(spinner.getSelectedItemId()));
-                // presenter.getInfoFBForValue(valueSearchable, idSpinner, db, getApplicationContext());
+                 presenter.getInfoFBForValueOrdened(idSpinner, db, getApplicationContext());
+            }
+        }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
             }
         });
+
         AlertDialog dialog = alertMessage.create();
         dialog.show();
     }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.examentecnico.R;
@@ -40,6 +41,7 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         TextView user, country, state, gender;
+        ImageView imageList;
         UserInfo us = listInfo.get(position);
         if (view ==null){
             view = LayoutInflater.from(context).inflate(R.layout.list_info, null);
@@ -48,11 +50,13 @@ public class MyAdapter extends BaseAdapter {
         country = view.findViewById(R.id.textViewCountry);
         state = view.findViewById(R.id.textViewState);
         gender = view.findViewById(R.id.textViewGender);
+        imageList = view.findViewById(R.id.imageViewItemsList);
 
-        user.setText(us.user);
-        country.setText(us.country);
-        state.setText(us.state);
-        gender.setText(us.gender);
+        user.setText("Usuario: " + us.user);
+        country.setText("Pais: " + us.country);
+        state.setText("Estado: " + us.state);
+        gender.setText("Genero: " + us.gender);
+        imageList.setImageResource(R.mipmap.icono);
         return view;
     }
 }

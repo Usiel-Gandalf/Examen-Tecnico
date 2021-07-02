@@ -28,6 +28,8 @@ public interface MainContract {
 
         void saveOrUpdateData(String usuario, String pais, String estado, String genero, FirebaseFirestore db);
 
+        void saveFakeData(String usuario, String pais, String estado, String genero, FirebaseFirestore db);
+
         void setDataUserOnEditText(String pais, String estado, String genero);
 
         void showMessage(String message);
@@ -36,7 +38,9 @@ public interface MainContract {
     }
 
     interface Model{
-        void saveOrUpdateData(String usuario, String pais, String estado, String genero, Map<String, Object> map, FirebaseFirestore db, MainContract.Presenter listener);
+        void saveOrUpdateData(String usuario, Map<String, Object> map, FirebaseFirestore db, MainContract.Presenter listener);
+
+        void saveFakeDatas(String usuario, Map<String, Object> map, FirebaseFirestore db, MainContract.Presenter listener);
 
         void getDataUserInfo(MainContract.Presenter listener, FirebaseFirestore db, Context context, String usuario);
     }

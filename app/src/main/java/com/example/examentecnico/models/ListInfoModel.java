@@ -10,6 +10,7 @@ import com.example.examentecnico.helpers.UserInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -72,7 +73,7 @@ public class ListInfoModel implements ListInfoContract.Model  {
 
     @Override
     public void getInfoFBForValueOrdened(String option, FirebaseFirestore db, Context context, ListInfoContract.Presenter listener, List<UserInfo> listinfo) {
-        db.collection("users").orderBy(option).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("users").orderBy(option, Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {

@@ -36,7 +36,7 @@ public class ListInfoPresenter implements ListInfoContract.Presenter{
     @Override
     public void getInfoFB(FirebaseFirestore db, Context context) {
         view.getPermission();
-        List<UserInfo> listinfo = new ArrayList<>();;
+        List<UserInfo> listinfo = new ArrayList<>();
         model.getInfoFB(db, context, this, listinfo);
     }
 
@@ -95,8 +95,8 @@ public class ListInfoPresenter implements ListInfoContract.Presenter{
         }else if(option == 3){
             optionDb = "genero";
         }
-
-        model.getInfoFBForValueOrdened(optionDb, db, context, this, listinfo);
+        //view.showMessage(optionDb);
+       model.getInfoFBForValueOrdened(optionDb, db, context, this, listinfo);
     }
 
     @Override

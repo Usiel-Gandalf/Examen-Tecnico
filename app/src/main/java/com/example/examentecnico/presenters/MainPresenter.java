@@ -28,7 +28,18 @@ public class MainPresenter implements MainContract.Presenter{
         map.put("estado", estado);
         map.put("genero", genero);
 
-        model.saveOrUpdateData(usuario, pais, estado, genero, map, db, this);
+        model.saveOrUpdateData(usuario, map, db, this);
+    }
+
+    @Override
+    public void saveFakeData(String usuario, String pais, String estado, String genero, FirebaseFirestore db) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("usuario", usuario);
+        map.put("pais", pais);
+        map.put("estado", estado);
+        map.put("genero", genero);
+
+        model.saveOrUpdateData(usuario, map, db, this);
     }
 
     @Override
