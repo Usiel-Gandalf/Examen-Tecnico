@@ -43,7 +43,28 @@ public class LoginModel implements LoginContract.Model {
 
     @Override
     public void createFBaseUser(String usuario, String password, LoginContract.Presenter listener, FirebaseAuth auth, Context context) {
+        auth.createUserWithEmailAndPassword(usuario, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            listener.showMessage("Registro de usuario Exitoso");
+                            listener.sesionSuccess();
+                        } else {
+                            String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                            switch (errorCode){
+                                case "ERROR_EMAIL_ALREADY_IN_USE":
+                                    listener.showMessage("Usuario registrado, inicie sesion");
+                                    break;
 
+                                case "ERROR_INVALID_EMAIL":
+                                    listener.showMessage("Tipo de Email incorrecto");
+                                    break;
+                            }
+                        }
+                    }
+                });
     }
 }
 

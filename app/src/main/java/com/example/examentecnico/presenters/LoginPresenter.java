@@ -20,6 +20,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void showMessage(String message) {
+        view.hideProgressBar();
         view.showMessage(message);
     }
 
@@ -105,6 +106,28 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void createUser(String usuario, String password, FirebaseAuth auth, Context context) {
+        view.showProgressBar();
 
+        if (validateTypeUserEmail(usuario)){
+            if (validatePasswordLenght(password) || validateAplhaPassword(password)){
+                if (isUserEmpty(usuario)){
+                    view.hideProgressBar();
+                    view.showErrorUser("El campo usuario no puede estar vacio");
+                }else{
+                    if (isPasswordEmpty(password)){
+                        view.hideProgressBar();
+                        view.showErrorPassword("El campo password no puede estar vacio");
+                    }else{
+                        model.createFBaseUser(usuario, password, this, auth, context);
+                    }
+                }
+            }else{
+                view.hideProgressBar();
+                view.showErrorPassword("Longitud minima de 8, unicamente alfanumericos");
+            }
+        }else {
+            view.hideProgressBar();
+            view.showErrorUser("El usuario debe de ser de tipo Mail");
+        }
     }
 }

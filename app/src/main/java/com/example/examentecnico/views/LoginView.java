@@ -91,4 +91,10 @@ public class LoginView extends AppCompatActivity implements LoginContract.View {
         String password = edtxtPassword.getText().toString();
         presenter.sesion(usuario, password, mAuth, this);
     }
+
+    public void createUser(View view) {
+        String usuario = edtxtUsuario.getText().toString();
+        String password = edtxtPassword.getText().toString();
+        presenter.createUser(usuario, password, mAuth, this);
+    }
 }
