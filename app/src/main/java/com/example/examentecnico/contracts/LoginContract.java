@@ -20,10 +20,6 @@ public interface LoginContract {
 
         void hideProgressBar();
 
-        void saveSession();
-
-        void checkSesion();
-
         void sessionSuccess();
     }
 
