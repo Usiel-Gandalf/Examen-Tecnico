@@ -11,4 +11,9 @@ public class LoginModel implements LoginContract.Model {
     public void sesionFBase(String usuario, String password, LoginContract.Presenter listener, FirebaseAuth auth, Context context) {
 
     }
+
+    @Override
+    public void createFBaseUser(String usuario, String password, LoginContract.Presenter listener, FirebaseAuth auth, Context context) {
+
+    }
 }

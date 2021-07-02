@@ -63,4 +63,7 @@ public class LoginVIew extends AppCompatActivity implements LoginContract.View {
 
     public void login(View view) {
     }
+
+    public void createUser(View view) {
+    }
 }

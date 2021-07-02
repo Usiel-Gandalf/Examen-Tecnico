@@ -46,4 +46,9 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void sesion(String usuario, String password, FirebaseAuth auth, Context context) {
 
     }
+
+    @Override
+    public void createUser(String usuario, String password, FirebaseAuth auth, Context context) {
+
+    }
 }
