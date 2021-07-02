@@ -102,4 +102,9 @@ public class LoginPresenter implements LoginContract.Presenter {
             view.showErrorUser("El usuario debe de ser de tipo Mail");
         }
     }
+
+    @Override
+    public void createUser(String usuario, String password, FirebaseAuth auth, Context context) {
+
+    }
 }
