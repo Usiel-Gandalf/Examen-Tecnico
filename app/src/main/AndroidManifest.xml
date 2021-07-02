@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Examentecnico">
         <activity android:name=".views.ListInfoView"></activity>
         <activity android:name=".views.MainView" />
-        <activity android:name=".views.LoginVIew">
+        <activity android:name=".views.LoginView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
