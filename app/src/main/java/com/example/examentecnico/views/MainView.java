@@ -57,8 +57,6 @@ public class MainView extends AppCompatActivity implements MainContract.View{
         presenter.getDataUserInfo(db, this, email);
     }
 
-
-
     @Override
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

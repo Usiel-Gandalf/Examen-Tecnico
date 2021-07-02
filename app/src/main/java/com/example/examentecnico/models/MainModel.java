@@ -35,21 +35,6 @@ public class MainModel implements MainContract.Model {
     }
 
     @Override
-    public void saveFakeDatas(String usuario, Map<String, Object> map, FirebaseFirestore db, MainContract.Presenter listener) {
-        db.collection("users").document(usuario).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-               // listener.showMessage("Datos guardados  correctamente");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                listener.showMessage("Ocurrio un error mientras se guardaba los datos");
-            }
-        });
-    }
-
-    @Override
     public void getDataUserInfo(MainContract.Presenter listener, FirebaseFirestore db, Context context, String usuario) {
         db.collection("users").whereEqualTo("usuario", usuario).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
