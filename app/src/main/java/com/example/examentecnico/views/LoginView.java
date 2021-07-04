@@ -1,9 +1,12 @@
 package com.example.examentecnico.views;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,10 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.examentecnico.R;
 import com.example.examentecnico.contracts.LoginContract;
 import com.example.examentecnico.presenters.LoginPresenter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +31,7 @@ public class LoginView extends AppCompatActivity implements LoginContract.View {
     ConstraintLayout constraintLayoutLogin;
     EditText edtxtUsuario, edtxtPassword;
     Button btnLogin;
+    AlertDialog.Builder alertMessage;
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
 
@@ -32,6 +40,7 @@ public class LoginView extends AppCompatActivity implements LoginContract.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_view);
         initElements();
+        getUserInfoTest();
     }
 
     @Override
@@ -41,6 +50,10 @@ public class LoginView extends AppCompatActivity implements LoginContract.View {
         if (currentUser != null){
             sessionSuccess();
         }
+    }
+
+    public void getUserInfoTest(){
+
     }
 
     @Override
@@ -96,5 +109,24 @@ public class LoginView extends AppCompatActivity implements LoginContract.View {
         String usuario = edtxtUsuario.getText().toString();
         String password = edtxtPassword.getText().toString();
         presenter.createUser(usuario, password, mAuth, this);
+    }
+
+    public void recoveryPassword(View view) {
+        String emailPasswordRecovery = edtxtUsuario.getText().toString();
+        alertMessage = new AlertDialog.Builder(this);
+        alertMessage.setMessage("¿Desea resetear su contraseña?")
+                .setPositiveButton("Resetear", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        presenter.resetPassword(emailPasswordRecovery, mAuth, getApplicationContext());
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+        AlertDialog dialog = alertMessage.create();
+        dialog.show();
     }
 }

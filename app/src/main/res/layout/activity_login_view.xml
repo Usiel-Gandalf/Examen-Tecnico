@@ -61,31 +61,49 @@
             android:backgroundTint="#e3e4e5"
             android:hint="Contraseña"
             android:inputType="textPassword"
-            android:paddingLeft="10dp"
+            android:paddingLeft="10dp" />
 
-            />
-
-        <Button
-            android:id="@+id/btnLogin"
+        <TextView
+            android:id="@+id/txtForgotPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/purple_700"
             android:layout_marginTop="10dp"
-            android:background="@drawable/roundborders"
-            android:gravity="center"
-            android:onClick="login"
-            android:text="Iniciar Sesion"
-            android:textColor="@color/cardview_light_background" />
+            android:layout_marginBottom="10dp"
+            android:onClick="recoveryPassword"
+            android:text="¿Olvidaste tu contraseña?" />
 
-        <Button
-            android:id="@+id/btnCreateUser"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/roundborders"
-            android:gravity="center"
-            android:onClick="createUser"
-            android:text="Crear Usuario"
-            android:textColor="@color/cardview_light_background" />
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/roundborders"
+                android:gravity="center"
+                android:onClick="login"
+                android:text="Iniciar Sesion"
+                android:textColor="@color/cardview_light_background" />
+
+            <Button
+                android:id="@+id/btnCreateUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/roundborders"
+                android:gravity="center"
+                android:onClick="createUser"
+                android:text="Crear Usuario"
+                android:textColor="@color/cardview_light_background" />
+        </LinearLayout>
+
     </LinearLayout>
 
 

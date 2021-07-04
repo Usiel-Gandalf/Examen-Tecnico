@@ -1,10 +1,12 @@
 package com.example.examentecnico.models;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.examentecnico.contracts.LoginContract;
+import com.example.examentecnico.views.LoginView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -37,12 +39,7 @@ public class LoginModel implements LoginContract.Model {
                             }
                         }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                listener.showMessage("Algo salio mal, intente nuevamente");
-            }
-        });
+                });
 
 
     }
@@ -74,6 +71,25 @@ public class LoginModel implements LoginContract.Model {
             @Override
             public void onFailure(@NonNull Exception e) {
                 listener.showMessage("Algo salio mal, intente nuevamente");
+            }
+        });
+    }
+
+    @Override
+    public void resetPassword(String usuario, LoginContract.Presenter listener, FirebaseAuth auth, Context context) {
+        auth.setLanguageCode("es");
+        auth.sendPasswordResetEmail(usuario)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            listener.showMessage("Revise su correo electronico para restaurar su contraseña");
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                listener.showMessage("Correo electronico inexistente");
             }
         });
     }

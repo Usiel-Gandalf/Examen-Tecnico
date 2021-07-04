@@ -47,7 +47,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public boolean validateTypeUserEmail(String email) {
         Boolean validation = false;
-        if (email.contains("@") || email.contains(".com")) {
+        if (email.contains("@") && email.contains(".com")) {
             validation = true;
         }
         return validation;
@@ -128,6 +128,19 @@ public class LoginPresenter implements LoginContract.Presenter {
         }else {
             view.hideProgressBar();
             view.showErrorUser("El usuario debe de ser de tipo Mail");
+        }
+    }
+
+    @Override
+    public void resetPassword(String usuario, FirebaseAuth auth, Context context) {
+        if (isUserEmpty(usuario)){
+            view.showErrorUser("Su usuario no puede estar vacio");
+        }else{
+            if (validateTypeUserEmail(usuario) == false){
+                view.showErrorUser("Usuario de tipo email requerido");
+            }else {
+                model.resetPassword(usuario, this, auth, context);
+            }
         }
     }
 }
